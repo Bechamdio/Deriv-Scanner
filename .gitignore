@@ -1,0 +1,60 @@
+# Deriv Scanner - .gitignore
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.eclipse/
+
+# Node/Build (if adding build tools later)
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Environment Files
+.env
+.env.local
+.env.*.local
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Temporary Files
+*.tmp
+.tmp/
+temp/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+*.cache
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Project specific (add as needed for V2/V3)
+# /data/           # When adding data persistence
+# /logs/           # When adding server-side logging
+# /.credentials/   # When adding authentication
