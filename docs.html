@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deriv Scanner - Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .doc-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .doc-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .doc-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .doc-section h3 {
+            color: var(--text-secondary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .doc-section p {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .code-block {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .feature-list li:before {
+            content: "✓ ";
+            color: var(--success-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .warning-box {
+            background: rgba(255, 217, 61, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: var(--bg-dark);
+        }
+
+        table th {
+            background: var(--border-color);
+            padding: 12px;
+            text-align: left;
+            color: var(--primary-color);
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        table tr:hover {
+            background: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="doc-container">
+        <a href="index.html" class="back-link">← Back to Scanner</a>
+
+        <header class="header">
+            <h1>Deriv Scanner Documentation</h1>
+            <p class="subtitle">Version 1 - Real-time Market Analysis</p>
+        </header>
+
+        <!-- Overview Section -->
+        <section class="doc-section">
+            <h2>Overview <span class="version-badge">V1</span></h2>
+            <p>
+                Deriv Scanner is a real-time market analysis tool that connects to Deriv's WebSocket API to analyze
+                volatility indices (10, 15, 25, 75, 100) and generate trading signals based on technical analysis.
+            </p>
+            <div class="warning-box">
+                <strong>⚠️ Important:</strong> Version 1 is a <strong>demo/analysis tool only</strong>.
+                It does not execute trades. Trading features will be added in future versions after thorough testing.
+            </div>
+
+            <h3>Key Features (V1)</h3>
+            <ul class="feature-list">
+                <li>WebSocket connection to Deriv live market data</li>
+                <li>Support for Volatility 10, 15, 25, 75, 100 indices</li>
+                <li>Real-time price tick collection and analysis</li>
+                <li>Technical indicators: SMA, EMA, RSI, MACD, Volatility, Standard Deviation</li>
+                <li>Automated trading signal generation (BUY/SELL/WAIT)</li>
+                <li>Signal strength percentage (0-100%)</li>
+                <li>Live price tracking and movement analysis</li>
+                <li>Event logging and analysis details</li>
+            </ul>
+        </section>
+
+        <!-- Getting Started Section -->
+        <section class="doc-section">
+            <h2>Getting Started</h2>
+
+            <h3>Step 1: Open the Scanner</h3>
+            <p>Open <code>index.html</code> in a modern web browser (Chrome, Firefox, Safari, or Edge).</p>
+
+            <h3>Step 2: Select a Volatility Index</h3>
+            <p>Use the dropdown menu to select one of the available indices:</p>
+            <table>
+                <tr>
+                    <th>Index</th>
+                    <th>Description</th>
+                    <th>Use Case</th>
+                </tr>
+                <tr>
+                    <td>Volatility 10</td>
+                    <td>Lowest volatility, 1-minute expiry</td>
+                    <td>Scalping, tight spreads</td>
+                </tr>
+                <tr>
+                    <td>Volatility 15</td>
+                    <td>Low volatility</td>
+                    <td>Short-term trades</td>
+                </tr>
+                <tr>
+                    <td>Volatility 25</td>
+                    <td>Moderate volatility</td>
+                    <td>Balanced trading</td>
+                </tr>
+                <tr>
+                    <td>Volatility 75</td>
+                    <td>High volatility</td>
+                    <td>Aggressive trading</td>
+                </tr>
+                <tr>
+                    <td>Volatility 100</td>
+                    <td>Highest volatility, 1-minute expiry</td>
+                    <td>Maximum movement</td>
+                </tr>
+            </table>
+
+            <h3>Step 3: Connect WebSocket</h3>
+            <p>Click the "Connect WebSocket" button to establish a real-time connection to Deriv's market data stream.</p>
+            <p>Look for the green "Connected" status badge once the connection is established.</p>
+
+            <h3>Step 4: Monitor the Scanner</h3>
+            <p>Watch the real-time price updates, volatility calculations, and trading signals as they update live.</p>
+        </section>
+
+        <!-- Technical Indicators Section -->
+        <section class="doc-section">
+            <h2>Technical Indicators</h2>
+
+            <h3>Simple Moving Average (SMA)</h3>
+            <p>Average price over the last 20 ticks. Used to identify trend direction.</p>
+
+            <h3>Exponential Moving Average (EMA)</h3>
+            <p>Weighted moving average giving more weight to recent prices. More responsive than SMA.</p>
+
+            <h3>Relative Strength Index (RSI)</h3>
+            <p>
+                Measures momentum on a scale of 0-100. Values below 30 suggest oversold conditions (potential BUY),
+                values above 70 suggest overbought conditions (potential SELL).
+            </p>
+
+            <h3>MACD (Moving Average Convergence Divergence)</h3>
+            <p>
+                Compares 12-period EMA with 26-period EMA. Positive MACD indicates uptrend, negative indicates downtrend.
+            </p>
+
+            <h3>Volatility (Standard Deviation)</h3>
+            <p>Measures how much prices deviate from the average. Higher values indicate more price movement.</p>
+
+            <h3>Movement (Range)</h3>
+            <p>Measured in pips, shows the difference between highest and lowest price in recent period.</p>
+        </section>
+
+        <!-- Signal Generation Section -->
+        <section class="doc-section">
+            <h2>Signal Generation</h2>
+
+            <p>The scanner generates trading signals based on multiple technical indicators with a scoring system:</p>
+
+            <h3>Scoring Algorithm</h3>
+            <table>
+                <tr>
+                    <th>Condition</th>
+                    <th>Impact</th>
+                </tr>
+                <tr>
+                    <td>RSI < 30 (Oversold)</td>
+                    <td>+15 points → BUY signal</td>
+                </tr>
+                <tr>
+                    <td>RSI > 70 (Overbought)</td>
+                    <td>-15 points → SELL signal</td>
+                </tr>
+                <tr>
+                    <td>Volatility > 5%</td>
+                    <td>+10 points</td>
+                </tr>
+                <tr>
+                    <td>Strong Movement (>100 pips)</td>
+                    <td>+5 points</td>
+                </tr>
+                <tr>
+                    <td>MACD Positive</td>
+                    <td>+10 points</td>
+                </tr>
+                <tr>
+                    <td>MACD Negative</td>
+                    <td>-10 points</td>
+                </tr>
+            </table>
+
+            <h3>Signal Interpretation</h3>
+            <ul class="feature-list">
+                <li><strong>BUY</strong> - Score > 65: Conditions favor uptrend</li>
+                <li><strong>SELL</strong> - Score < 35: Conditions favor downtrend</li>
+                <li><strong>WAIT</strong> - Score 35-65: Neutral or insufficient data</li>
+            </ul>
+
+            <p><strong>Signal Strength:</strong> Displayed as 0-100%, showing confidence level of the signal.</p>
+        </section>
+
+        <!-- Data Collection Section -->
+        <section class="doc-section">
+            <h2>Data Collection</h2>
+
+            <h3>Tick Collection</h3>
+            <p>
+                The scanner collects individual price ticks (quotes) from the WebSocket stream. A "tick" is a single
+                price update with timestamp. Each tick is added to the analysis buffer.
+            </p>
+
+            <h3>Analysis Window</h3>
+            <p>
+                Last 20 ticks are used for most calculations (SMA, volatility, movement, high/low).
+                Longer periods (RSI uses 14, MACD uses 12/26) use their respective lookback windows.
+            </p>
+
+            <h3>Data Retention</h3>
+            <p>Maximum of 100 recent ticks are retained in memory. Older ticks are automatically discarded.</p>
+        </section>
+
+        <!-- API Structure Section -->
+        <section class="doc-section">
+            <h2>JavaScript API</h2>
+
+            <h3>DerivWebSocket Class</h3>
+            <p>Manages connection to Deriv API and tick stream.</p>
+            <div class="code-block">
+deriv.connect()           // Connect to WebSocket<br>
+deriv.disconnect()        // Close connection<br>
+deriv.subscribe(index)    // Subscribe to volatility index<br>
+deriv.getTicks()          // Get array of collected ticks<br>
+deriv.getTickCount()      // Get total ticks collected<br>
+deriv.resetTicks()        // Clear tick collection<br>
+deriv.on(event, callback) // Register event listener
+            </div>
+
+            <h3>TechnicalAnalyzer Class</h3>
+            <p>Performs technical analysis on price data.</p>
+            <div class="code-block">
+analyzer.addPrice(price)          // Add price to analysis<br>
+analyzer.analyze()                // Get complete analysis object<br>
+analyzer.calculateSMA(period)     // Get simple moving average<br>
+analyzer.calculateEMA(period)     // Get exponential moving average<br>
+analyzer.calculateRSI(period)     // Get RSI (0-100)<br>
+analyzer.calculateVolatility()    // Get volatility %<br>
+analyzer.calculateMovement()      // Get movement in pips<br>
+analyzer.clear()                  // Reset analyzer
+            </div>
+
+            <h3>SignalGenerator Class</h3>
+            <p>Generates trading signals based on analysis.</p>
+            <div class="code-block">
+signalGenerator.generateSignal()  // Get signal object<br>
+signalGenerator.setThreshold(n)   // Set custom threshold
+            </div>
+        </section>
+
+        <!-- Event Log Section -->
+        <section class="doc-section">
+            <h2>Event Log</h2>
+
+            <p>The scanner maintains a real-time event log showing:</p>
+            <ul class="feature-list">
+                <li>Connection status changes</li>
+                <li>Subscription events</li>
+                <li>Signal generation with reasons</li>
+                <li>Errors and warnings</li>
+                <li>System messages</li>
+            </ul>
+
+            <p>
+                Each log entry includes timestamp and color-coded type (info, success, warning, error).
+                Maximum 50 entries are displayed; older entries scroll off the bottom.
+            </p>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section class="doc-section">
+            <h2>Development Roadmap</h2>
+
+            <h3>Version 1 (Current) ✓</h3>
+            <ul class="feature-list">
+                <li>WebSocket connection to Deriv</li>
+                <li>Volatility index selection</li>
+                <li>Real-time price display</li>
+                <li>Technical indicators (SMA, EMA, RSI, MACD)</li>
+                <li>Signal generation (BUY/SELL/WAIT)</li>
+                <li>Signal strength percentage</li>
+                <li>Demo/analysis mode only</li>
+            </ul>
+
+            <h3>Version 2 (Planned)</h3>
+            <ul class="feature-list">
+                <li>Price chart visualization</li>
+                <li>Additional technical indicators</li>
+                <li>Historical data analysis</li>
+                <li>Signal filtering options</li>
+                <li>Trade journal tracking</li>
+                <li>Results analytics</li>
+            </ul>
+
+            <h3>Version 3 (Planned)</h3>
+            <ul class="feature-list">
+                <li>Deriv user login/authentication</li>
+                <li>Connect to user's account</li>
+                <li>Demo account trading (no real money)</li>
+                <li>Automatic reconnection handling</li>
+                <li>After extensive testing: optional live trading</li>
+            </ul>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section class="doc-section">
+            <h2>Troubleshooting</h2>
+
+            <h3>Connection Failed</h3>
+            <p>
+                If you see "Connection failed" errors, check that you have an active internet connection.
+                Deriv's WebSocket server must be accessible. Try disconnecting and reconnecting.
+            </p>
+
+            <h3>No Ticks Received</h3>
+            <p>
+                Ensure you've selected a volatility index before connecting. Wait a few seconds after connecting
+                for ticks to start arriving.
+            </p>
+
+            <h3>Signals Not Generating</h3>
+            <p>
+                The scanner needs at least 20 ticks before it starts analyzing. Wait for "Ticks Collected" counter
+                to reach 20+. Then signals should appear on the next analysis cycle.
+            </p>
+
+            <h3>Browser Console Errors</h3>
+            <p>
+                Open your browser's developer console (F12 or Cmd+Option+I) to see detailed error messages.
+                These can help diagnose connection or data issues.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Deriv Scanner V1 Documentation | Demo/Analysis Only | Not for Live Trading</p>
+        </footer>
+    </div>
+</body>
+</html>
